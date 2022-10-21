@@ -1,6 +1,6 @@
 {
     "name": "cometa/keyloack",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Simples conexão com keycloack, authentication/authorization",
     "type": "library",
     "license": "GPL-3.0-or-later",
