@@ -12,7 +12,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "Cometa\\KeyCloack\\": "src/"
+            "Cometa\\keyCloack\\": "key-cloack/src/"
         }
     },
     "minimum-stability": "dev",
