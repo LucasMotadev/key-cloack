@@ -1,5 +1,5 @@
 {
-    "name": "cometa/keycloack",
+    "name": "cometa/key-cloack",
     "version": "1.0.1-stable",
     "description": "Simples conexão com keycloack, authentication/authorization",
     "type": "library",
