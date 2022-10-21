@@ -7,7 +7,7 @@ A **authorization** funciona apens para permissoes baseadas em _escopos_ ou perm
 ##### Instalação
  * Instalar usando o composer: ``composer install cometa/keycloack``
  * Publicar arquivos de configuração: Se você esta ultilizando **laravel** execulte o senguite codigo no terminal ``php artisan vendor:publish`` isso fará com com o laravel crie os arquivos de configuração em _config/keyCloack.php_ e _config/auth.php_ caso isso não sai como esperado ou se voce ultiliza  **laravel/lumen** será necessario fazer isso manualmente. Basta copiar _vendor/cometa-keycloack/config/*_ para _config/_.
- * Registrar providers: Adicione a linha em _bootstrap/app.php_ 
+ * Registrar providers: Adicione a linha em *_bootstrap/app.php_* 
  ~~~php
  $app->register(Cometa\KeyCloack\Providers\KeyCloackServiceProvider::class);
  ~~~
