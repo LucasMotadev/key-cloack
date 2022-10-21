@@ -1,6 +1,6 @@
 <?php
 
-namespace Cometa\KeyCloack\Middleware;
+namespace Cometa\KeyCloack\Middlewares;
 
 use Cometa\KeyCloack\Exceptions\KeycloackHttpException;
 use Cometa\KeyCloack\Exceptions\TokenExpiredException;
