@@ -29,8 +29,9 @@
     }
   },
   "scripts": {
-    "post-create-project-cmd":[
-        "php -r \"copy('config/KeyCloack.php', '../../config/KeyCloack.php');\""
+    "post-create-project-cmd": [],
+    "post-root-package-install": [
+      "php -r \"copy('config/KeyCloack.php', '../../config/KeyCloack.php');\""
     ]
   }
 }
