@@ -10,10 +10,10 @@ class KeyCloackServiceProvider extends ServiceProvider
 {
     public function boot()
     {
-        $key = __DIR__ . '/../config/keycloak.php';
-        $value = base_path("config/keyCloack.php");
-        $this->publishes([$key => $value], 'config');
-        $this->mergeConfigFrom($value, 'keycloak');
+        $local = __DIR__ . '/../../config/keyCloack.php';
+        $app = base_path("config/keyCloack.php");
+        $this->publishes([$local => $app], 'config');
+        $this->mergeConfigFrom($local, 'keyCloak');
     }
 
     public function register()
