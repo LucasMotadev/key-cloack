@@ -1,28 +1,47 @@
 #### Cometa KeyCloack
 
-Uma simples biblioteca para "authentication/authorization" no sso *[keycloack](<https://www.keycloak.org/>)* ultilizando o protrotocolo **openid-connect**.
+Uma simples biblioteca para "authentication/authorization" no sso _[keycloack](https://www.keycloak.org/)_ ultilizando o protrotocolo **openid-connect**.
 
-A **authorization** funciona apens para permissoes baseadas em _escopos_ ou permissoes baseadas em _recursos_, para saber mais acesse *[KeyCloack Authorization Services](<https://www.keycloak.org/docs/latest/authorization_services/index.html>)*
+A **authorization** funciona apens para permissoes baseadas em _escopos_ ou permissoes baseadas em _recursos_, para saber mais acesse _[KeyCloack Authorization Services](https://www.keycloak.org/docs/latest/authorization_services/index.html)_
 
-##### Instalação 
- * Instalar usando o composer: ``composer require cometa/keycloack``
- * Publicar arquivos de configuração: Se você esta ultilizando **laravel** execulte o senguite codigo no terminal ``php artisan vendor:publish`` isso fará com com o laravel crie os arquivos de configuração em _config/keyCloack.php_ e _config/auth.php_ caso isso não sai como esperado ou se voce ultiliza  **laravel/lumen** será necessario fazer isso manualmente. Basta copiar _vendor/cometa-keycloack/config/*_ para _config/_.
- * Registrar providers: Adicione a linha em *_bootstrap/app.php_* 
- ~~~php
- $app->register(Cometa\KeyCloack\Providers\KeyCloackServiceProvider::class);
- ~~~
+#### Instalação **LARAVEL**
 
- * Registrar middlewares **authorization** e **authentication**: adicionar as linhas em _bootstrap/app.php_ 
- 
- ~~~php 
- $app->routeMiddleware([
-    'auth' => Cometa\KeyCloack\Middlewares\Authenticate::class,
-    'permission' => Cometa\KeyCloack\Middlewares\Authorization::class
- ]);
+- Instalar usando o composer: `composer require cometa/key-cloack`
+- Publicar arquivos de configuração:Execulte o senguite codigo no terminal `php artisan vendor:publish --tag=config` isso fará com com o laravel crie o arquivo de configuração em _config/ caso isso não sai como esperado será necessario fazer isso manualmente. Basta copiar \_vendor/cometa-keycloack/config/keyCloack.php_ para _config/_.
+
+- Registrar Middlewares: Em _app/Http/Kenel.php_ adicioner os dois items no array **$routeMiddleware**
+
+~~~php
+   $routerMiddleware = [
+       'auth' => Cometa\KeyCloack\Middlewares\Authenticate::class,
+       'permission' => Cometa\KeyCloack\Middlewares\Authorization::class
+       ...
+   ];
 
 ~~~
 
-Se voce seguiu todas os passos corretamente basta chamar o middleware um sua rota. O middleware **permission** recebe um parametro _route#scoped_, para entender mais sobre contrele de acesso com keyclock acesse *[keycloack](<https://www.keycloak.org/>)*
+
+#### Instalação **LUMEN**
+* Instalar usando o composer: `composer require cometa/key-cloack`
+* Publicar configurações: 
+    * Copiar _vendor/cometa-keycloack/config/keyCloack.php_ para _config/_.
+    * Copiar _vendor/cometa-keycloack/config/auth.php_ para _config/_., caso o arquivo auth já exista fazer apenas um merger das informações de acordo com sua necessidade.
+* Registrar Providers: Adicione a linha em *_bootstrap/app.php_*
+~~~php
+$app->register(Cometa\KeyCloack\Providers\KeyCloackServiceProvider::class);
+~~~
+
+- Registrar middlewares **authorization** e **authentication**: adicionar as linhas em _bootstrap/app.php_
+
+~~~php
+$app->routeMiddleware([
+   'auth' => Cometa\KeyCloack\Middlewares\Authenticate::class,
+   'permission' => Cometa\KeyCloack\Middlewares\Authorization::class
+]);
+
+~~~
+#### Usando
+Se voce seguiu todas os passos corretamente basta chamar o middleware um sua rota. O middleware **permission** recebe um parametro _route#scoped_, para entender mais sobre contrele de acesso com keyclock acesse _[keycloack](https://www.keycloak.org/)_
 
 ~~~php
 $router->get('/keycloack', [
@@ -34,18 +53,19 @@ $router->get('/keycloack', [
 
 #### Exemplos
 
-* Captura o usuario autheticado
+- Captura o usuario autheticado
 
 ~~~php
-    
+
     /**
      * @return \Illuminate\Contracts\Auth\Authenticatable|null
      **/
     Illuminate\Support\Facades\Auth::user();
 
 ~~~
- * Verificar se o usuario logado possui um papel
-  
+
+- Verificar se o usuario logado possui um papel
+
 ~~~php
 
     /**
@@ -57,7 +77,7 @@ $router->get('/keycloack', [
      Illuminate\Support\Facades\Auth::hasRoles([Role::admin, Role::gestor]);
 ~~~
 
-* Retornas todas as permissoes do usuario logado
+- Retornas todas as permissoes do usuario logado
 
 ~~~php
     /**
@@ -66,7 +86,7 @@ $router->get('/keycloack', [
     Illuminate\Support\Facades\Auth::allPermission();
 ~~~
 
-* Retornas todos os papeis
+- Retornas todos os papeis
 
 ~~~php
     /**
@@ -76,7 +96,7 @@ $router->get('/keycloack', [
 
 ~~~
 
-* Retorna um atributos contido no token
+- Retorna um atributos contido no token
 
 ~~~php
     /**
@@ -84,3 +104,4 @@ $router->get('/keycloack', [
      * @return mixed
      **/
     Illuminate\Support\Facades\Auth::getAttribute("name");
+~~~
