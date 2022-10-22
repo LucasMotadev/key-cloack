@@ -104,7 +104,7 @@ class KeyCloackGuard implements Guard
     {
         $data = [
             'permission' => $permission,
-            'audience' => 'cometa-leitura',
+            'audience' => $this->config['client_id'],
             'grant_type' => 'urn:ietf:params:oauth:grant-type:uma-ticket'
         ];
 
