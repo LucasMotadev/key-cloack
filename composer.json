@@ -31,7 +31,7 @@
   },
   "scripts": {
     "post-create-project-cmd":[
-        "php -r \"copy('config/local-example.php', 'config/local.php');\""
+        "php -r \"copy('config/KeyCloack.php', '../../config/KeyCloack.php');\""
     ]
   }
 }
