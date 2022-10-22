@@ -27,11 +27,5 @@
         "Cometa\\KeyCloack\\Providers\\KeyCloackServiceProvider"
       ]
     }
-  },
-  "scripts": {
-    "post-create-project-cmd": [],
-    "post-root-package-install": [
-      "php -r \"copy('config/KeyCloack.php', '../../config/KeyCloack.php');\""
-    ]
   }
 }
