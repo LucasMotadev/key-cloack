@@ -116,7 +116,7 @@ class KeyCloackGuard implements Guard
         return !!Http::post($this->decodedToken->iss . "/protocol/openid-connect/token", $data, $header);
     }
 
-    public function hasRoles(array|Role $roles): bool
+    public function hasRoles($roles): bool
     {
         $rolesUserAuth = $this->decodedToken->resource_access->{$this->config['client_id']}->roles;
         if (!is_array($roles)) return in_array($roles->name, $rolesUserAuth);

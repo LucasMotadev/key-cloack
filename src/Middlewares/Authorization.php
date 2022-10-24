@@ -5,7 +5,6 @@ namespace Cometa\KeyCloack\Middlewares;
 use Cometa\KeyCloack\Exceptions\KeycloackHttpException;
 use Cometa\KeyCloack\Exceptions\TokenExpiredException;
 use Cometa\KeyCloack\Exceptions\TokenNotFoundException;
-use Cometa\KeyCloack\Role;
 use Closure;
 use Exception;
 use Illuminate\Support\Facades\Auth;
@@ -15,7 +14,7 @@ class Authorization
     public function handle($request, Closure $next, $guard)
     {
         try {
-            if (Auth::hasRoles(Role::admin)) return $next($request);
+            if (Auth::hasRoles("admin")) return $next($request);
 
             Auth::can($guard);
 
