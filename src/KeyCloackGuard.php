@@ -22,7 +22,7 @@ class KeyCloackGuard implements Guard
 
     public function __construct(UserProvider $provider, Request $request)
     {
-        $this->config = config('keycloak');
+        $this->config = config('keyCloack');
         $this->provider = $provider;
         $this->request = $request;
         $this->setDecodedToken();

@@ -13,7 +13,7 @@ class KeyCloackServiceProvider extends ServiceProvider
         $local = __DIR__ . '/../../config/keyCloack.php';
         $app = base_path("config/keyCloack.php");
         $this->publishes([$local => $app], 'config');
-        $this->mergeConfigFrom($local, 'keyCloak');
+        $this->mergeConfigFrom($local, 'keyCloack');
     }
 
     public function register()
