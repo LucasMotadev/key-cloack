@@ -40,7 +40,9 @@ class KeyCloackGuard implements Guard
             $this->attributeUser[$key] = $this->decodedToken->$value;
         }
 
-        $this->setUser(new User($this->attributeUser));
+        $classUser =  $this->provider->getModel();
+        $user = new $classUser($this->attributeUser);
+        $this->setUser($user);
     }
 
     private function getBearerToken()
