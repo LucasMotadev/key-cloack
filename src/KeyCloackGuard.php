@@ -121,9 +121,9 @@ class KeyCloackGuard implements Guard
     public function hasRoles($roles): bool
     {
         $rolesUserAuth = $this->decodedToken->resource_access->{$this->config['client_id']}->roles;
-        if (!is_array($roles)) return in_array($roles->name, $rolesUserAuth);
+        if (!is_array($roles)) return in_array($roles, $rolesUserAuth);
 
-        foreach ($roles as $key => $role) {
+        foreach ($roles as $role) {
             return  in_array($role, $rolesUserAuth);
         }
     }
